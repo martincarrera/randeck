@@ -8,8 +8,12 @@
 
   function MainController(MainService) {
     var vm = this;
-    vm.cards = MainService.getCards();
-    vm.arenas = MainService.getArenas();
+    MainService.getCards().then(function(cards){
+      vm.cards = cards.data;
+    });
+    MainService.getArenas().then(function(arenas){
+      vm.arenas = arenas.data;
+    });
   }
 
 })();
