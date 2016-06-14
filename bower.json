@@ -1,0 +1,24 @@
+{
+  "name": "randeck",
+  "main": [
+    "/dist/randeck.min.js",
+    "/dist/randeck.min.css"
+  ],
+  "version": "0.0.0",
+  "description": "Randeck",
+  "authors": [
+    "martincarrera"
+  ],
+  "ignore": [
+    "**/.*",
+    "package.json",
+    "gulpfile.js",
+    "node_modules",
+    "bower_components",
+    "src"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-ui-router": "^0.2.18"
+  }
+}

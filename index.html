@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- <base href="/"> -->
+    <title>Randeck</title>
+
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <script src="js/controllers/MainController.js"></script>
+
+    <script src="js/services/MainService.js"></script>
+  </head>
+  <body ng-app="randeck">
+    <div ng-controller="MainController">
+      <ul>
+       <li ng-repeat="card in cards">
+         <span>{{card.name}}</span>
+         <p>{{card.elixirCost}}</p>
+       </li>
+     </ul>
+    </div>
+  </body>
+</html>
