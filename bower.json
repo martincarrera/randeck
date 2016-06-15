@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "angular": "latest",
-    "angular-ui-router": "^0.2.18"
+    "angular-ui-router": "^0.2.18",
+    "angular-material": "^1.0.9"
   }
 }
