@@ -22,29 +22,44 @@
   </head>
   <body ng-app="randeck">
     <div ng-controller="MainController as vm">
-      <div layout layout-align="center center">
-        <h2>Randeck is a website used to generate random decks for Clash Royale.</h2>
-      </div>
-      <div layout layout-align="center center">
-        <div layout="column" flex="20" layout-align="center start">
-          <div ng-repeat="item in vm.cardsRarity">
-            <md-checkbox ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
-             {{ item }}
-            </md-checkbox>
+      <md-toolbar class="md-medium-tall" layout-align="center start" flex>
+        <div layout layout-align="center center">
+          <img src="images/cards.png" alt="logo" class="logo"/>
+          <span class="header">Randeck</span>
+        </div>
+      </md-toolbar>
+      <main class="md-padding" layout="column" flex>
+        <!-- <div layout layout-align="center center">
+          <h2>Randeck is a website used to generate random decks for Clash Royale.</h2>
+        </div> -->
+        <div class="box">
+          <div layout layout-align="center center">
+            <div layout="column" flex="20" layout-align="center start">
+              <div ng-repeat="item in vm.cardsRarity">
+                <md-checkbox ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
+                  {{ item }}
+                </md-checkbox>
+              </div>
+            </div>
+            <div layout="column" flex="20" layout-align="center center">
+              <md-button class="md-fab" aria-label="Random Deck" ng-click="vm.generateRandomDeck();">
+                <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+              </md-button>
+            </div>
           </div>
         </div>
-        <div layout="column" flex="20" layout-align="center center">
-          <md-button class="md-fab" aria-label="Random Deck" ng-click="vm.generateRandomDeck();">
-            <md-icon md-svg-src="images/shuffle.svg"></md-icon>
-          </md-button>
-        </div>
-      </div>
 
-      <div class="cards-box" layout layout-align="space-around center" layout-wrap>
-        <div flex="25" layout layout-align="center center" ng-repeat="card in vm.randomDeck">
-          <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
+        <div layout layout-align="center center" layout-wrap class="box">
+          <div flex="25" layout layout-align="center center" ng-repeat="card in vm.randomDeck">
+            <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
+          </div>
         </div>
-      </div>
+      </main>
+      <md-toolbar class="md-medium-tall">
+        <div layout="row" layout-align="center center" flex>
+          <span>Made with <md-icon md-svg-src="images/heart.svg"></md-icon> by <a href="http://www.martincarrera.xyz">Martin Carrera</a>, powered by <a href="http://www.clashapi.xyz">Clashapi</a></span>
+        </div>
+      </md-toolbar>
     </div>
   </body>
 </html>

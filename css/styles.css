@@ -1,5 +1,28 @@
+main {
+  min-height: calc(100vh - 176px);
+}
+
+a {
+  color: #64ffda;
+  text-decoration: none;
+}
+
+.header {
+  font-size: 40px;
+  padding-left: 10px;
+}
+
+.logo {
+  width: 80px;
+  padding-left: 10px;
+}
+
 .card {
   height: 100%;
   max-height: 262px;
   max-width: 218px;
+}
+
+.box {
+  padding-top: 20px;
 }
