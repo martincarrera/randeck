@@ -10,6 +10,7 @@
     var vm = this;
     vm.cardsRarity = 'Common Rare Epic Legendary'.split(' ');
     vm.selectedRarities = 'Common Rare Epic Legendary'.split(' ');
+    vm.averageCost = 0;
     MainService.getCards().then(function(cards){
       vm.cards = cards.data;
       vm.generateRandomDeck();
@@ -26,6 +27,11 @@
     vm.generateRandomDeck = function(){
       var cards = vm.cards.filter(vm.cardInRarity);
       vm.randomDeck = MainService.shuffle(cards).slice(0, 8);
+      var totalCost = vm.randomDeck
+        .map(function(card){ return card.elixirCost; })
+        .reduce(function(a, b){ return a + b; });
+      vm.averageCost = totalCost / (8);
+      vm.averageCost = Math.round(vm.averageCost * 10) / 10;
     }
 
     vm.toggle = function (item, list) {
