@@ -22,13 +22,13 @@
   </head>
   <body ng-app="randeck">
     <div ng-controller="MainController as vm">
-      <div layout>
+      <div layout layout-align="center center">
         <h2>Randeck is a website used to generate random decks for Clash Royale.</h2>
-        <div layout>
-          <md-button class="md-fab" aria-label="Random Deck" ng-click="vm.generateRandomDeck();">
-            <md-icon md-svg-src="images/shuffle.svg"></md-icon>
-          </md-button>
-        </div>
+      </div>
+      <div layout layout-align="center center">
+        <md-button class="md-fab" aria-label="Random Deck" ng-click="vm.generateRandomDeck();">
+          <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+        </md-button>
       </div>
       <div layout layout-align="space-around center" layout-wrap>
         <div flex="25" layout layout-align="center center" ng-repeat="card in vm.randomDeck">
