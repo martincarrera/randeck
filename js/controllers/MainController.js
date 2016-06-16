@@ -19,12 +19,12 @@
       vm.arenas = arenas.data;
     });
 
-    vm.cardInType = function(card) {
+    vm.cardInRarity = function(card) {
       return vm.selectedRarities.indexOf(card.rarity) !== -1;
     }
 
     vm.generateRandomDeck = function(){
-      var cards = vm.cards.filter(vm.cardInType);
+      var cards = vm.cards.filter(vm.cardInRarity);
       vm.randomDeck = MainService.shuffle(cards).slice(0, 8);
     }
 
