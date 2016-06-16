@@ -35,17 +35,10 @@
       } else {
         list.push(item);
       }
-      console.log(list);
     };
+
     vm.exists = function (item, list) {
       return list.indexOf(item) > -1;
-    };
-    vm.isIndeterminate = function() {
-      return (vm.selectedRarities.length !== 0 &&
-          vm.selectedRarities.length !== vm.cardsRarity.length);
-    };
-    vm.isChecked = function() {
-      return vm.selectedRarities.length === vm.cardsRarity.length;
     };
 
   }
