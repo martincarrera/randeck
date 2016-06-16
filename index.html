@@ -50,13 +50,13 @@
         </div>
 
         <div layout layout-align="center center" layout-wrap class="box">
-          <div flex="20"></div>
+          <div flex-gt-sm="20"></div>
           <div flex="60" layout layout-align="center center" layout-wrap>
             <div flex="25" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
               <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
             </div>
           </div>
-          <div flex="20"></div>
+          <div flex-gt-sm="20"></div>
         </div>
       </main>
       <md-toolbar class="md-medium-tall">
