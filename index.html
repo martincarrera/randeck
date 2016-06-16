@@ -26,11 +26,21 @@
         <h2>Randeck is a website used to generate random decks for Clash Royale.</h2>
       </div>
       <div layout layout-align="center center">
-        <md-button class="md-fab" aria-label="Random Deck" ng-click="vm.generateRandomDeck();">
-          <md-icon md-svg-src="images/shuffle.svg"></md-icon>
-        </md-button>
+        <div layout="column" flex="20" layout-align="center start">
+          <div ng-repeat="item in vm.cardsRarity">
+            <md-checkbox ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
+             {{ item }}
+            </md-checkbox>
+          </div>
+        </div>
+        <div layout="column" flex="20" layout-align="center center">
+          <md-button class="md-fab" aria-label="Random Deck" ng-click="vm.generateRandomDeck();">
+            <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+          </md-button>
+        </div>
       </div>
-      <div layout layout-align="space-around center" layout-wrap>
+
+      <div class="cards-box" layout layout-align="space-around center" layout-wrap>
         <div flex="25" layout layout-align="center center" ng-repeat="card in vm.randomDeck">
           <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
         </div>
