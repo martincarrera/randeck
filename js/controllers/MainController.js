@@ -9,7 +9,7 @@
   function MainController(MainService) {
     var vm = this;
     vm.cardsRarity = 'Common Rare Epic Legendary'.split(' ');
-    vm.selectedRarities = [];
+    vm.selectedRarities = 'Common Rare Epic Legendary'.split(' ');
     MainService.getCards().then(function(cards){
       vm.cards = cards.data;
       vm.generateRandomDeck();
