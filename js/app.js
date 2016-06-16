@@ -1,1 +1,1 @@
-angular.module('randeck', ['ui.router']);
+angular.module('randeck', ['ngMaterial']);
