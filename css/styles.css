@@ -7,6 +7,7 @@ a {
   text-decoration: none;
 }
 
+
 .header {
   font-size: 40px;
   padding-left: 10px;
@@ -25,4 +26,31 @@ a {
 
 .box {
   padding-top: 20px;
+}
+
+md-checkbox.md-checked.common .md-icon {
+  background-color: #404040;
+}
+
+md-checkbox.md-checked.rare .md-icon{
+  background-color: #ffa31a;
+}
+
+md-checkbox.md-checked.epic .md-icon {
+  background-color: #b300b3;
+}
+
+md-checkbox.md-checked.legendary .md-icon {
+  background-image: -webkit-gradient(linear,left top,right top,color-stop(0,#D68AB0),color-stop(0.25,#D8CE5D),color-stop(0.5,#6BD85D),color-stop(0.75,#5DB9D8),color-stop(1,#D85DCB));
+  background-image: -webkit-linear-gradient(left,#D68AB0 0%,#D8CE5D 25%,#6BD85D 50%,#5DB9D8 75%,#D85DCB 100%);
+  background-size: 1000% 1000%;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: Text-Legendary 6s infinite;
+  color: #33cccc;
+}
+
+@-webkit-keyframes Text-Legendary {
+  0% { background-position:0% 50% }
+  50% { background-position:100% 50% }
+  100% { background-position:0% 50% }
 }

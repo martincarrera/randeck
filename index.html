@@ -36,7 +36,7 @@
           <div layout layout-align="center center">
             <div layout="column" flex="20" layout-align="center start">
               <div ng-repeat="item in vm.cardsRarity">
-                <md-checkbox ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
+                <md-checkbox ng-class="item | lowercase" ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
                   {{ item }}
                 </md-checkbox>
               </div>
