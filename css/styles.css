@@ -7,7 +7,6 @@ a {
   text-decoration: none;
 }
 
-
 .header {
   font-size: 40px;
   padding-left: 10px;
@@ -18,14 +17,21 @@ a {
   padding-left: 10px;
 }
 
+.arena {
+  width: 100%;
+  max-height: 75px;
+  max-width: 75px;
+}
+
 .card {
   width: 100%;
-  max-height: 262px;
-  max-width: 218px;
+  max-height: 200px;
+  max-width: 166px;
 }
 
 .box {
   padding-top: 20px;
+  max-height: 75%;
 }
 
 md-checkbox.md-checked.common .md-icon {
