@@ -35,6 +35,12 @@ a {
   max-height: 75%;
 }
 
+.elixir-cost {
+  font-size: 28px;
+  font-weight: bold;
+  color: #3F51B5;
+}
+
 md-checkbox.md-checked.common .md-icon {
   background-color: #404040;
 }
