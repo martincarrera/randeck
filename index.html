@@ -21,53 +21,71 @@
     <script src="js/services/MainService.js"></script>
   </head>
   <body ng-app="randeck">
-    <div ng-controller="MainController as vm">
-      <md-toolbar class="md-medium-tall" layout-align="center start" flex>
+    <div ng-controller="MainController as vm" ng-cloak>
+      <md-toolbar class="md-medium-tall" layout-align="center center" flex>
         <div layout layout-align="center center">
           <img src="images/cards.png" alt="logo" class="logo"/>
           <span class="header">Randeck</span>
         </div>
       </md-toolbar>
-      <main class="md-padding" layout="column" flex>
-        <div class="box">
-          <div layout layout-align="center center">
-            <div layout="column" flex="20" layout-align="center start">
-              <div ng-repeat="item in vm.cardsRarity">
-                <md-checkbox ng-class="item | lowercase" ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
-                  {{ item }}
-                </md-checkbox>
+      <main class="md-padding" layout="row" flex>
+          <md-sidenav
+              class="md-sidenav-left"
+              md-is-locked-open="$mdMedia('gt-md')"
+              md-disable-backdrop
+              md-whiteframe="4">
+            <md-toolbar class="md-theme-indigo">
+              <h2 class="md-toolbar-tools">Rarity</h2>
+            </md-toolbar>
+            <md-content layout-padding>
+              <div layout="column" flex="20" layout-align="center start">
+                <div ng-repeat="item in vm.cardsRarity">
+                  <md-checkbox ng-class="item | lowercase" ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
+                    {{ item }}
+                  </md-checkbox>
+                </div>
               </div>
-            </div>
-            <div layout="column" flex="40" layout-align="center start">
-              <md-radio-group layout layout-wrap ng-model="vm.selectedArena">
-                <md-radio-button flex="15"
-                                 ng-repeat="arena in vm.arenas"
-                                 ng-value="arena.number"
-                                 aria-label="{{arena.name}}">
-                   <img ng-src="http://www.clashapi.xyz/images/arenas/{{arena.idName}}.png" alt="{{arena.name}}" class="arena"/>
-                </md-radio-button>
-              </md-radio-group>
-            </div>
-            <div layout="column" flex="20" layout-align="center center">
+            </md-content>
+            <md-toolbar class="md-theme-indigo">
+              <h1 class="md-toolbar-tools">Max Arena</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+              <div layout="row" layout-align="start start">
+                <md-radio-group ng-model="vm.selectedArena">
+                  <md-radio-button
+                    ng-repeat="arena in vm.arenas"
+                    ng-value="arena.number"
+                    aria-label="{{arena.name}}">
+                    <span>{{arena.number}} - {{arena.name}}</span>
+                  </md-radio-button>
+                </md-radio-group>
+              </div>
+            </md-content>
+          </md-sidenav>
+
+        <div layout="column">
+          <div class="box">
+            <div layout layout-align="center center">
+              <span class="elixir-cost">Generate random deck!</span>
               <md-button class="md-fab" aria-label="Random Deck" ng-click="vm.generateRandomDeck();">
                 <md-icon md-svg-src="images/shuffle.svg"></md-icon>
               </md-button>
             </div>
           </div>
-        </div>
 
-        <div layout layout-align="center center" layout-wrap class="box">
-          <div flex-gt-sm="20" flex="0"></div>
-          <div flex="60" layout layout-align="center center" layout-wrap>
-            <div flex="25" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
-              <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
+          <div layout layout-align="center center" layout-wrap class="box">
+            <div flex-gt-sm="20" flex="0"></div>
+            <div flex="60" layout layout-align="center center" layout-wrap>
+              <div flex="25" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
+                <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
+              </div>
             </div>
+            <div flex-gt-sm="20" flex="0"></div>
           </div>
-          <div flex-gt-sm="20" flex="0"></div>
-        </div>
 
-        <div class="box" layout layout-align="center center">
-          <span class="elixir-cost">Average Elixir Cost {{vm.averageCost}}</span>
+          <div class="box" layout layout-align="center center">
+            <span class="elixir-cost">Average Elixir Cost {{vm.averageCost}}</span>
+          </div>
         </div>
       </main>
       <md-toolbar class="md-medium-tall">
