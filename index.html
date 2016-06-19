@@ -62,11 +62,12 @@
               </div>
             </md-content>
             <md-toolbar class="md-theme-indigo no-min-height">
-              <md-button class="md-raised" ng-click="vm.generateRandomDeck();">
-                <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+              <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
                 Generate random deck
+                <md-icon md-svg-src="images/shuffle.svg"></md-icon>
               </md-button>
             </md-toolbar>
+            <md-content></md-content>
           </md-sidenav>
 
 
@@ -75,7 +76,7 @@
           <div class="box" layout layout-align="center center">
             <span class="elixir-cost">Average Elixir Cost {{vm.averageCost}}</span>
           </div>
-          
+
           <div layout layout-align="center center" layout-wrap class="box">
             <div flex-gt-sm="20" flex="0"></div>
             <div flex="60" layout layout-align="center center" layout-wrap>

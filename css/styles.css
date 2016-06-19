@@ -49,6 +49,12 @@ a {
   min-height: 0;
 }
 
+.generate-button {
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ff4081;
+}
+
 md-checkbox.md-checked.common .md-icon {
   background-color: #404040;
 }
