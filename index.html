@@ -29,72 +29,74 @@
           md-is-locked-open="true"
           md-disable-backdrop
           md-whiteframe="4">
-          <md-toolbar class="md-theme-indigo">
-            <h2 class="md-toolbar-tools">Rarity</h2>
-          </md-toolbar>
-          <md-content layout-padding>
-            <div layout="column" flex="20" layout-align="center start">
-              <div ng-repeat="item in vm.cardsRarity">
-                <md-checkbox ng-class="item | lowercase" ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
-                  {{ item }}
-                </md-checkbox>
+          <md-nav-bar>
+            <md-toolbar class="md-theme-indigo">
+              <h2 class="md-toolbar-tools">Rarity</h2>
+            </md-toolbar>
+            <md-content layout-padding>
+              <div layout="column" flex="20" layout-align="center start">
+                <div ng-repeat="item in vm.cardsRarity">
+                  <md-checkbox ng-class="item | lowercase" ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
+                    {{ item }}
+                  </md-checkbox>
+                </div>
               </div>
-            </div>
-          </md-content>
-          <md-divider></md-divider>
-          <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Max Arena</h1>
-          </md-toolbar>
-          <md-content layout-padding>
-            <div layout="row" layout-align="start start">
-              <md-radio-group ng-model="vm.selectedArena">
-                <md-radio-button
-                  ng-repeat="arena in vm.arenas"
-                  ng-value="arena.number"
-                  aria-label="{{arena.name}}">
-                  <span>{{arena.number}} - {{arena.name}}</span>
-                </md-radio-button>
-              </md-radio-group>
-            </div>
-          </md-content>
-          <md-divider></md-divider>
-          <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Card types</h1>
-          </md-toolbar>
-          <md-content layout-padding>
-            <md-slider-container>
-              <div layout layout-align="start center">
-                <md-slider md-discrete ng-model="vm.troops" min="0" max="8" flex="60"></md-slider>
-                <span flex="30"> {{ vm.troops }} Troops</span>
+            </md-content>
+            <md-divider></md-divider>
+            <md-toolbar class="md-theme-indigo">
+              <h1 class="md-toolbar-tools">Max Arena</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+              <div layout="row" layout-align="start start">
+                <md-radio-group ng-model="vm.selectedArena">
+                  <md-radio-button
+                    ng-repeat="arena in vm.arenas"
+                    ng-value="arena.number"
+                    aria-label="{{arena.name}}">
+                    <span>{{arena.number}} - {{arena.name}}</span>
+                  </md-radio-button>
+                </md-radio-group>
               </div>
-            </md-slider-container>
-            <md-slider-container>
-              <div layout layout-align="start center">
-                <md-slider md-discrete ng-model="vm.spells" min="0" max="8" flex="60"></md-slider>
-                <span flex="30">{{ vm.spells }} Spells</span>
-              </div>
-            </md-slider-container>
-            <md-slider-container>
-              <div layout layout-align="start center">
-                <md-slider md-discrete ng-model="vm.buildings" min="0" max="8" flex="60"></md-slider>
-                <span flex="30"> {{ vm.buildings }} Buildings</span>
-              </div>
-            </md-slider-container>
-          </md-content>
-          <md-divider></md-divider>
-          <md-toolbar class="no-min-height no-background">
-            <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
-              Generate random deck
-              <md-icon md-svg-src="images/shuffle.svg"></md-icon>
-            </md-button>
-          </md-toolbar>
-          <md-content></md-content>
+            </md-content>
+            <md-divider></md-divider>
+            <md-toolbar class="md-theme-indigo">
+              <h1 class="md-toolbar-tools">Card types</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+              <md-slider-container>
+                <div layout layout-align="start center">
+                  <md-slider md-discrete ng-model="vm.troops" min="0" max="8" flex="60"></md-slider>
+                  <span flex="30"> {{ vm.troops }} Troops</span>
+                </div>
+              </md-slider-container>
+              <md-slider-container>
+                <div layout layout-align="start center">
+                  <md-slider md-discrete ng-model="vm.spells" min="0" max="8" flex="60"></md-slider>
+                  <span flex="30">{{ vm.spells }} Spells</span>
+                </div>
+              </md-slider-container>
+              <md-slider-container>
+                <div layout layout-align="start center">
+                  <md-slider md-discrete ng-model="vm.buildings" min="0" max="8" flex="60"></md-slider>
+                  <span flex="30"> {{ vm.buildings }} Buildings</span>
+                </div>
+              </md-slider-container>
+            </md-content>
+            <md-divider></md-divider>
+            <md-toolbar class="no-min-height no-background">
+              <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
+                Generate random deck
+                <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+              </md-button>
+            </md-toolbar>
+            <md-content></md-content>
+          </md-nav-bar>
         </md-sidenav>
         <div layout="column" flex>
-          <div class="box" layout layout-align="center center">
+          <div class="box" flex="15" layout layout-align="center center">
             <span class="elixir-cost">Average Elixir Cost {{vm.averageCost}}</span>
           </div>
-          <div layout layout-align="center center" layout-wrap class="box">
+          <div layout layout-align="center center" layout-wrap class="box" flex>
             <div flex-gt-sm="20" flex="0"></div>
             <div flex="60" layout layout-align="center center" layout-wrap>
               <div flex="25" class="card-container" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
