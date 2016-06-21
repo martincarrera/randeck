@@ -31,7 +31,7 @@
       <main class="md-padding" layout="row" flex>
           <md-sidenav
               class="md-sidenav-left"
-              md-is-locked-open="$mdMedia('gt-md')"
+              md-is-locked-open="true"
               md-disable-backdrop
               md-whiteframe="4">
             <md-toolbar class="md-theme-indigo">
@@ -46,7 +46,7 @@
                 </div>
               </div>
             </md-content>
-            <md-divider md-inset></md-divider>
+            <md-divider></md-divider>
             <md-toolbar class="md-theme-indigo">
               <h1 class="md-toolbar-tools">Max Arena</h1>
             </md-toolbar>
@@ -62,7 +62,7 @@
                 </md-radio-group>
               </div>
             </md-content>
-            <md-divider md-inset></md-divider>
+            <md-divider></md-divider>
             <md-toolbar class="no-min-height no-background">
               <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
                 Generate random deck
