@@ -63,21 +63,21 @@
           </md-toolbar>
           <md-content layout-padding>
             <md-slider-container>
-              <div layout layout-align="space-between center">
-                <span flex="10">Troops</span>
+              <div layout layout-align="start center">
                 <md-slider md-discrete ng-model="vm.troops" min="0" max="8" flex="60"></md-slider>
+                <span flex="30"> {{ vm.troops }} Troops</span>
               </div>
             </md-slider-container>
             <md-slider-container>
-              <div layout layout-align="space-between center">
-                <span flex="10">Spells</span>
+              <div layout layout-align="start center">
                 <md-slider md-discrete ng-model="vm.spells" min="0" max="8" flex="60"></md-slider>
+                <span flex="30">{{ vm.spells }} Spells</span>
               </div>
             </md-slider-container>
             <md-slider-container>
-              <div layout layout-align="space-between center">
-                <span flex="10">Buildings</span>
+              <div layout layout-align="start center">
                 <md-slider md-discrete ng-model="vm.buildings" min="0" max="8" flex="60"></md-slider>
+                <span flex="30"> {{ vm.buildings }} Buildings</span>
               </div>
             </md-slider-container>
           </md-content>

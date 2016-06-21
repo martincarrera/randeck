@@ -48,8 +48,13 @@ a {
 .no-min-height {
   min-height: 0;
 }
+
 .no-background {
   background-color: #ffffff !important;
+}
+
+md-slider {
+  padding-right: 5px;
 }
 
 .generate-button {
