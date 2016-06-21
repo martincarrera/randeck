@@ -12,24 +12,28 @@
     // --- initialize variables ---
     vm.cardsRarity = ['Common', 'Rare', 'Epic', 'Legendary'];
     vm.selectedRarities = ['Common', 'Rare', 'Epic', 'Legendary'];
+    vm.cardsType = ['Building', 'Spell', 'Troop'];
+    vm.buildings = 2;
+    vm.spells = 1;
+    vm.troops = 5;
     vm.averageCost = 0;
     vm.selectedArena = 8;
     vm.randomDeck = [];
     vm.arenas = [];
     vm.cards = [];
-    
+
     // --- exposed funcions ---
     vm.generateRandomDeck = generateRandomDeck;
     vm.toggle = toggle;
     vm.exists = exists;
-    
+
     activate();
     ///////////////////////////////////////////////////////
-    
+
     /**
      * Initialize the controller
-     * 
-     * Initial API calls, setup functions, etc. 
+     *
+     * Initial API calls, setup functions, etc.
      */
     function activate() {
       MainService.getCards().then(function(cards){
@@ -48,16 +52,28 @@
     function generateRandomDeck(){
       var cards = vm.cards.filter(cardInRarity);
       cards = cards.filter(cardInArena);
-      vm.randomDeck = MainService.shuffle(cards).slice(0, 8);
+      vm.randomDeck = getRandomDeckByCardType(cards);
+      // vm.randomDeck = MainService.shuffle(cards).slice(0, 8);
       var totalCost = vm.randomDeck
         .map(function(card){ return card.elixirCost; })
         .reduce(function(a, b){ return a + b; });
-      vm.averageCost = Math.round(totalCost / (8) * 10) / 10;
+      vm.averageCost = Math.round(totalCost / (vm.randomDeck.length) * 10) / 10;
+    }
+
+    function getRandomDeckByCardType(cards) {
+      var buildings = cards.filter(function(card) { return card.type == 'Building'; });
+      buildings = MainService.shuffle(buildings).slice(0, vm.buildings);
+      var troops = cards.filter(function(card) { return card.type == 'Troop'; });
+      troops = MainService.shuffle(troops).slice(0, vm.troops);
+      var spells = cards.filter(function(card) { return card.type == 'Spell'; });
+      spells = MainService.shuffle(spells).slice(0, vm.spells);
+      var randomDeck = buildings.concat(troops).concat(spells);
+      return MainService.shuffle(randomDeck).slice(0, 8);
     }
 
     /**
      * Toggles item in a list
-     * 
+     *
      * @param {Any}  item to toggle
      * @param {Array<Any>}  list
      */
@@ -72,7 +88,7 @@
 
     /**
      * Checks item existence in a list
-     * 
+     *
      * @param {Any}  item to check
      * @param {Array<Any>}  list to check
      * @returns {Bool}  item exists in list
@@ -83,7 +99,7 @@
 
     /**
      * Checks if a card is in the selected arenas
-     * 
+     *
      * @param {Object}  card
      * @returns {Bool}  card belongs to the selected arenas
      */
@@ -93,7 +109,7 @@
 
     /**
      * Checks if a card is in the selected rarities
-     * 
+     *
      * @param {Object}  card
      * @returns {Bool}  card rarity is in selected rarities
      */

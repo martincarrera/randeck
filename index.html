@@ -4,20 +4,15 @@
     <meta charset="UTF-8">
     <title>Randeck</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
-
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="css/styles.css">
-
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script src="bower_components/angular-material/angular-material.min.js"></script>
-
     <script src="js/app.js"></script>
-
     <script src="js/controllers/MainController.js"></script>
-
     <script src="js/services/MainService.js"></script>
   </head>
   <body ng-app="randeck">
@@ -29,56 +24,76 @@
         </div>
       </md-toolbar>
       <main class="md-padding" layout="row" flex>
-          <md-sidenav
-              class="md-sidenav-left"
-              md-is-locked-open="true"
-              md-disable-backdrop
-              md-whiteframe="4">
-            <md-toolbar class="md-theme-indigo">
-              <h2 class="md-toolbar-tools">Rarity</h2>
-            </md-toolbar>
-            <md-content layout-padding>
-              <div layout="column" flex="20" layout-align="center start">
-                <div ng-repeat="item in vm.cardsRarity">
-                  <md-checkbox ng-class="item | lowercase" ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
-                    {{ item }}
-                  </md-checkbox>
-                </div>
+        <md-sidenav
+          class="md-sidenav-left"
+          md-is-locked-open="true"
+          md-disable-backdrop
+          md-whiteframe="4">
+          <md-toolbar class="md-theme-indigo">
+            <h2 class="md-toolbar-tools">Rarity</h2>
+          </md-toolbar>
+          <md-content layout-padding>
+            <div layout="column" flex="20" layout-align="center start">
+              <div ng-repeat="item in vm.cardsRarity">
+                <md-checkbox ng-class="item | lowercase" ng-checked="vm.exists(item, vm.selectedRarities)" ng-click="vm.toggle(item, vm.selectedRarities)">
+                  {{ item }}
+                </md-checkbox>
               </div>
-            </md-content>
-            <md-divider></md-divider>
-            <md-toolbar class="md-theme-indigo">
-              <h1 class="md-toolbar-tools">Max Arena</h1>
-            </md-toolbar>
-            <md-content layout-padding>
-              <div layout="row" layout-align="start start">
-                <md-radio-group ng-model="vm.selectedArena">
-                  <md-radio-button
-                    ng-repeat="arena in vm.arenas"
-                    ng-value="arena.number"
-                    aria-label="{{arena.name}}">
-                    <span>{{arena.number}} - {{arena.name}}</span>
-                  </md-radio-button>
-                </md-radio-group>
+            </div>
+          </md-content>
+          <md-divider></md-divider>
+          <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Max Arena</h1>
+          </md-toolbar>
+          <md-content layout-padding>
+            <div layout="row" layout-align="start start">
+              <md-radio-group ng-model="vm.selectedArena">
+                <md-radio-button
+                  ng-repeat="arena in vm.arenas"
+                  ng-value="arena.number"
+                  aria-label="{{arena.name}}">
+                  <span>{{arena.number}} - {{arena.name}}</span>
+                </md-radio-button>
+              </md-radio-group>
+            </div>
+          </md-content>
+          <md-divider></md-divider>
+          <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Card types</h1>
+          </md-toolbar>
+          <md-content layout-padding>
+            <md-slider-container>
+              <div layout layout-align="space-between center">
+                <span flex="10">Troops</span>
+                <md-slider md-discrete ng-model="vm.troops" min="0" max="8" flex="60"></md-slider>
               </div>
-            </md-content>
-            <md-divider></md-divider>
-            <md-toolbar class="no-min-height no-background">
-              <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
-                Generate random deck
-                <md-icon md-svg-src="images/shuffle.svg"></md-icon>
-              </md-button>
-            </md-toolbar>
-            <md-content></md-content>
-          </md-sidenav>
-
-
-        <div layout="column">
-
+            </md-slider-container>
+            <md-slider-container>
+              <div layout layout-align="space-between center">
+                <span flex="10">Spells</span>
+                <md-slider md-discrete ng-model="vm.spells" min="0" max="8" flex="60"></md-slider>
+              </div>
+            </md-slider-container>
+            <md-slider-container>
+              <div layout layout-align="space-between center">
+                <span flex="10">Buildings</span>
+                <md-slider md-discrete ng-model="vm.buildings" min="0" max="8" flex="60"></md-slider>
+              </div>
+            </md-slider-container>
+          </md-content>
+          <md-divider></md-divider>
+          <md-toolbar class="no-min-height no-background">
+            <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
+              Generate random deck
+              <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+            </md-button>
+          </md-toolbar>
+          <md-content></md-content>
+        </md-sidenav>
+        <div layout="column" flex>
           <div class="box" layout layout-align="center center">
             <span class="elixir-cost">Average Elixir Cost {{vm.averageCost}}</span>
           </div>
-
           <div layout layout-align="center center" layout-wrap class="box">
             <div flex-gt-sm="20" flex="0"></div>
             <div flex="60" layout layout-align="center center" layout-wrap>
@@ -88,12 +103,13 @@
             </div>
             <div flex-gt-sm="20" flex="0"></div>
           </div>
-
         </div>
       </main>
       <md-toolbar class="md-medium-tall">
         <div layout="row" layout-align="center center" flex>
-          <span>Made with <md-icon md-svg-src="images/heart.svg"></md-icon> by <a href="http://www.martincarrera.xyz">Martin Carrera</a>, powered by <a href="https://github.com/martincarrera/clash-royale-api">Clashapi</a></span>
+          <span>
+            Made with <md-icon md-svg-src="images/heart.svg"></md-icon> by <a href="http://www.martincarrera.xyz">Martin Carrera</a>, powered by <a href="https://github.com/martincarrera/clash-royale-api">Clashapi</a>
+          </span>
         </div>
       </md-toolbar>
     </div>
