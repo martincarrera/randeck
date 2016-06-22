@@ -4,9 +4,9 @@
     .module('randeck')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['MainService'];
+  MainController.$inject = ['MainService', '$scope'];
 
-  function MainController(MainService) {
+  function MainController(MainService, $scope) {
     // --- view-model ---
     var vm = this;
     // --- initialize variables ---
@@ -69,6 +69,38 @@
       spells = MainService.shuffle(spells).slice(0, vm.spells);
       var randomDeck = buildings.concat(troops).concat(spells);
       return MainService.shuffle(randomDeck).slice(0, 8);
+    }
+
+    $scope.$watch('vm.troops', function(newVal, oldVal) {
+      var diff = newVal - oldVal;
+      if(vm.troops + vm.spells + vm.buildings !== 8) {
+        adjustCardType(vm.buildings, vm.spells, diff);
+      }
+    });
+
+    $scope.$watch('vm.buildings', function(newVal, oldVal) {
+      var diff = newVal - oldVal;
+      if(vm.troops + vm.spells + vm.buildings !== 8) {
+        adjustCardType(vm.troops, vm.spells, diff);
+      }
+    });
+
+    $scope.$watch('vm.spells', function(newVal, oldVal) {
+      var diff = newVal - oldVal;
+      if(vm.troops + vm.spells + vm.buildings !== 8) {
+        adjustCardType(vm.buildings, vm.troops, diff);
+      }
+    });
+
+    function adjustCardType (typeA, typeB, diff) {
+      while (diff > 0) {
+        typeA >= typeB ? typeA-- : typeB--;
+        diff--;
+      }
+      while (diff < 0) {
+        typeA <= typeB ? typeA++ : typeB++;
+        diff++;
+      }
     }
 
     /**
