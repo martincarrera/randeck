@@ -74,34 +74,44 @@
     $scope.$watch('vm.troops', function(newVal, oldVal) {
       var diff = newVal - oldVal;
       if(vm.troops + vm.spells + vm.buildings !== 8) {
-        adjustCardType(vm.buildings, vm.spells, diff);
+        while (diff > 0) {
+          vm.buildings >= vm.spells ? vm.buildings = vm.buildings - 1 : vm.spells = vm.spells - 1;
+          diff--;
+        }
+        while (diff < 0) {
+          vm.buildings <= vm.spells ? vm.buildings = vm.buildings + 1 : vm.spells = vm.spells + 1;
+          diff++;
+        }
       }
     });
 
     $scope.$watch('vm.buildings', function(newVal, oldVal) {
       var diff = newVal - oldVal;
       if(vm.troops + vm.spells + vm.buildings !== 8) {
-        adjustCardType(vm.troops, vm.spells, diff);
+        while (diff > 0) {
+          vm.troops >= vm.spells ? vm.troops = vm.troops - 1 : vm.spells = vm.spells - 1;
+          diff--;
+        }
+        while (diff < 0) {
+          vm.troops <= vm.spells ? vm.troops = vm.troops + 1 : vm.spells = vm.spells + 1;
+          diff++;
+        }
       }
     });
 
     $scope.$watch('vm.spells', function(newVal, oldVal) {
       var diff = newVal - oldVal;
       if(vm.troops + vm.spells + vm.buildings !== 8) {
-        adjustCardType(vm.buildings, vm.troops, diff);
+        while (diff > 0) {
+          vm.buildings >= vm.troops ? vm.buildings = vm.buildings - 1 : vm.troops = vm.troops - 1;
+          diff--;
+        }
+        while (diff < 0) {
+          vm.buildings <= vm.troops ? vm.buildings = vm.buildings + 1 : vm.troops = vm.troops + 1;
+          diff++;
+        }
       }
     });
-
-    function adjustCardType (typeA, typeB, diff) {
-      while (diff > 0) {
-        typeA >= typeB ? typeA-- : typeB--;
-        diff--;
-      }
-      while (diff < 0) {
-        typeA <= typeB ? typeA++ : typeB++;
-        diff++;
-      }
-    }
 
     /**
      * Toggles item in a list
