@@ -13,6 +13,11 @@ a {
   padding-left: 10px;
 }
 
+.footer {
+  font-size: 0.6em;
+  height: 60px;
+}
+
 .logo {
   width: 80px;
   padding-left: 10px;
