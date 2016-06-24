@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Randeck</title>
     <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
@@ -26,7 +27,7 @@
       <main class="md-padding" layout="row" flex>
         <md-sidenav
           class="md-sidenav-left"
-          md-is-locked-open="true"
+          md-is-locked-open="$mdMedia('gt-xs')"
           md-disable-backdrop
           md-whiteframe="4">
           <md-nav-bar>
@@ -97,13 +98,13 @@
             <span class="elixir-cost">Average Elixir Cost {{vm.averageCost}}</span>
           </div>
           <div layout layout-align="center center" layout-wrap class="box" flex>
-            <div flex-gt-sm="20" flex="0"></div>
-            <div flex="60" layout layout-align="center center" layout-wrap>
-              <div flex="25" class="card-container" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
+            <div flex-gt-sm="20" flex-sm="0" flex-xs="0"></div>
+            <div flex flex-sm="80" layout layout-align="center center" layout-wrap>
+              <div flex="25" flex-sm="40" class="card-container" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
                 <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
               </div>
             </div>
-            <div flex-gt-sm="20" flex="0"></div>
+            <div flex-gt-sm="20" flex-sm="0" flex-xs="0"></div>
           </div>
         </div>
       </main>
