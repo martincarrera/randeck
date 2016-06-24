@@ -14,13 +14,14 @@
     vm.selectedRarities = ['Common', 'Rare', 'Epic', 'Legendary'];
     vm.cardsType = ['Building', 'Spell', 'Troop'];
     vm.buildings = 2;
-    vm.spells = 1;
-    vm.troops = 5;
+    vm.spells = 2;
+    vm.troops = 4;
     vm.averageCost = 0;
     vm.selectedArena = 8;
     vm.randomDeck = [];
     vm.arenas = [];
     vm.cards = [];
+    vm.randomCardTypes = true;
 
     // --- exposed funcions ---
     vm.generateRandomDeck = generateRandomDeck;
@@ -53,12 +54,16 @@
     function generateRandomDeck(){
       var cards = vm.cards.filter(cardInRarity);
       cards = cards.filter(cardInArena);
-      vm.randomDeck = getRandomDeckByCardType(cards);
-      // vm.randomDeck = MainService.shuffle(cards).slice(0, 8);
+      if (!vm.randomCardTypes) {
+        vm.randomDeck = getRandomDeckByCardType(cards);
+      } else {
+        vm.randomDeck = MainService.shuffle(cards).slice(0, 8);
+      }
       var totalCost = vm.randomDeck
         .map(function(card){ return card.elixirCost; })
         .reduce(function(a, b){ return a + b; });
       vm.averageCost = Math.round(totalCost / (vm.randomDeck.length) * 10) / 10;
+      $mdSidenav('menu').close();
     }
 
     function getRandomDeckByCardType(cards) {
@@ -69,7 +74,6 @@
       var spells = cards.filter(function(card) { return card.type == 'Spell'; });
       spells = MainService.shuffle(spells).slice(0, vm.spells);
       var randomDeck = buildings.concat(troops).concat(spells);
-      $mdSidenav('menu').close();
       return MainService.shuffle(randomDeck).slice(0, 8);
     }
 
