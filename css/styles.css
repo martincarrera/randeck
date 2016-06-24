@@ -19,7 +19,7 @@ a {
 }
 
 md-sidenav {
-  max-height: calc(100vh - 176px - 32px);
+  /*max-height: calc(100vh - 176px - 32px);*/
 }
 
 span {
@@ -73,6 +73,10 @@ md-slider {
 
 .generate-button:hover {
   background-color: rgba(255,64,129, 0.65) !important;
+}
+
+.generate-button md-icon {
+  padding-left: 5px;
 }
 
 md-checkbox.md-checked.common .md-icon {

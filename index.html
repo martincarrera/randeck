@@ -18,19 +18,32 @@
   </head>
   <body ng-app="randeck">
     <div ng-controller="MainController as vm" ng-cloak>
-      <md-toolbar class="md-medium-tall" layout-align="center center" flex>
-        <div layout layout-align="center center">
+      <md-toolbar class="md-medium-tall" layout layout-align="center center" flex>
+        <div flex="5">
+          <md-button ng-click="vm.toggleMenu();" class="md-icon-button" aria-label="toggle menu">
+            <md-icon md-svg-src="images/settings.svg"></md-icon>
+          </md-button>
+        </div>
+        <div layout layout-align="center center" flex="90">
           <img src="images/cards.png" alt="logo" class="logo"/>
           <span class="header">Randeck</span>
         </div>
+        <div flex="5"></div>
       </md-toolbar>
       <main class="md-padding" layout="row" flex>
         <md-sidenav
           class="md-sidenav-left"
-          md-is-locked-open="$mdMedia('gt-xs')"
+          md-component-id="menu"
           md-disable-backdrop
-          md-whiteframe="4">
+          md-whiteframe="4"
+          class="md-theme-indigo">
           <md-nav-bar>
+            <md-toolbar class="no-min-height">
+              <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
+                Generate random deck
+                <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+              </md-button>
+            </md-toolbar>
             <md-toolbar class="md-theme-indigo">
               <h2 class="md-toolbar-tools">Rarity</h2>
             </md-toolbar>
@@ -83,14 +96,6 @@
                 </div>
               </md-slider-container>
             </md-content>
-            <md-divider></md-divider>
-            <md-toolbar class="no-min-height no-background">
-              <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
-                Generate random deck
-                <md-icon md-svg-src="images/shuffle.svg"></md-icon>
-              </md-button>
-            </md-toolbar>
-            <md-content></md-content>
           </md-nav-bar>
         </md-sidenav>
         <div layout="column" flex>
@@ -100,11 +105,17 @@
           <div layout layout-align="center center" layout-wrap class="box" flex>
             <div flex-gt-sm="20" flex-sm="0" flex-xs="0"></div>
             <div flex flex-sm="80" layout layout-align="center center" layout-wrap>
-              <div flex="25" flex-sm="40" class="card-container" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
+              <div flex="25" class="card-container" layout layout-align="space-around center" ng-repeat="card in vm.randomDeck">
                 <img ng-src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" alt="{{card.name}}" class="card"/>
               </div>
             </div>
             <div flex-gt-sm="20" flex-sm="0" flex-xs="0"></div>
+          </div>
+          <div class="box" flex="5" layout layout-align="center center">
+            <md-button class="generate-button" ng-click="vm.generateRandomDeck();" layout layout-align="center center">
+              Generate random deck
+              <md-icon md-svg-src="images/shuffle.svg"></md-icon>
+            </md-button>
           </div>
         </div>
       </main>

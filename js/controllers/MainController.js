@@ -4,9 +4,9 @@
     .module('randeck')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['MainService', '$scope'];
+  MainController.$inject = ['MainService', '$scope', '$mdSidenav'];
 
-  function MainController(MainService, $scope) {
+  function MainController(MainService, $scope, $mdSidenav) {
     // --- view-model ---
     var vm = this;
     // --- initialize variables ---
@@ -26,6 +26,7 @@
     vm.generateRandomDeck = generateRandomDeck;
     vm.toggle = toggle;
     vm.exists = exists;
+    vm.toggleMenu = toggleMenu;
 
     activate();
     ///////////////////////////////////////////////////////
@@ -68,6 +69,7 @@
       var spells = cards.filter(function(card) { return card.type == 'Spell'; });
       spells = MainService.shuffle(spells).slice(0, vm.spells);
       var randomDeck = buildings.concat(troops).concat(spells);
+      $mdSidenav('menu').close();
       return MainService.shuffle(randomDeck).slice(0, 8);
     }
 
@@ -112,6 +114,13 @@
         }
       }
     });
+
+    /**
+     * Toggles menu
+     */
+    function toggleMenu() {
+      $mdSidenav('menu').toggle();
+    }
 
     /**
      * Toggles item in a list
