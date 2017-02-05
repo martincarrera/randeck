@@ -13,11 +13,11 @@
     vm.cardsRarity = ['Common', 'Rare', 'Epic', 'Legendary'];
     vm.selectedRarities = ['Common', 'Rare', 'Epic', 'Legendary'];
     vm.cardsType = ['Building', 'Spell', 'Troop'];
-    vm.buildings = 2;
+    vm.buildings = 1;
     vm.spells = 2;
-    vm.troops = 4;
+    vm.troops = 5;
     vm.averageCost = 0;
-    vm.selectedArena = 8;
+    vm.selectedArena = 10;
     vm.randomDeck = [];
     vm.arenas = [];
     vm.cards = [];
