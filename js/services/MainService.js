@@ -2,10 +2,10 @@ angular.module('randeck').factory('MainService', function($http) {
 
     return {
         getArenas : function() {
-            return $http.get('http://www.clashapi.xyz/api/arenas');
+            return $http.get('https://clashapi.now.sh/api/arenas');
         },
         getCards : function() {
-            return $http.get('http://www.clashapi.xyz/api/cards');
+            return $http.get('https://clashapi.now.sh/api/cards');
         },
         shuffle : function(array) {
           var temporaryValue, randomIndex, currentIndex = array.length;
